@@ -1,7 +1,7 @@
 pipeline{
   agent { label "ansible"}
   environment{
-    ANSIBLE_HOST_KEY_CHECKING=False
+    ANSIBLE_HOST_KEY_CHECKING = false
   }
   stages{
     stage("deploy nginx"){
