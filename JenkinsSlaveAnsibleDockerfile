@@ -1,6 +1,6 @@
 FROM adoptopenjdk/openjdk8
 USER root
-RUN apt-get update && apt-get install -y wget python python-pip && \
+RUN apt-get update && apt-get install -y git wget python python-pip && \
     pip install ansible==2.7.1
 
 COPY swarm-client.sh /usr/local/swarm-client.sh

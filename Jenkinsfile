@@ -1,5 +1,5 @@
 pipeline{
-  agent any
+  agent { label "ansible"}
   stages{
     stage("deploy nginx"){
       steps{

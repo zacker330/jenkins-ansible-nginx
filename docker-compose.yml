@@ -17,6 +17,7 @@ services:
       - JENKINS_MASTER_URL=http://jenkins:8080
       - JENKINS_MASTER_USERNAME=admin
       - JENKINS_MASTER_PASSWORD=123456
+      - JENKINS_SWARM_LABEL=ansible
   gitlab:
     image: gitlab/gitlab-ce:10.5.4-ce.0
     ports:
