@@ -1,0 +1,13 @@
+FROM adoptopenjdk/openjdk8
+USER root
+RUN apt-get update && apt-get install -y wget python python-pip && \
+    pip install ansible==2.7.1
+
+COPY swarm-client.sh /usr/local/swarm-client.sh
+RUN mkdir -p /usr/local/swarm && \
+     mv /usr/local/swarm-client.sh  /usr/local/swarm/ && \
+    wget https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/3.9/swarm-client-3.9.jar -O  /usr/local/swarm/swarm-client.jar && \
+    chmod +x /usr/local/swarm/swarm-client.sh
+
+WORKDIR /var/jenkins_home
+ENTRYPOINT ["/usr/local/swarm/swarm-client.sh"]

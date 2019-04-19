@@ -1,0 +1,31 @@
+version: '3.3'
+services:
+  jenkins:
+    image: jenkins/jenkins:2.169
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - ~/jenkins-ansible-nginx:/var/jenkins_home
+    restart: always
+
+  jenkins-agent:
+    image: jenkins-swarm-ansible:latest
+    # image: image.midea.com/caas/midea-jenkins-slave:java-all
+    restart: always
+    environment:
+      - JENKINS_MASTER_URL=http://jenkins:8080
+      - JENKINS_MASTER_USERNAME=admin
+      - JENKINS_MASTER_PASSWORD=123456
+  gitlab:
+    image: gitlab/gitlab-ce:10.5.4-ce.0
+    ports:
+      - "22:22"
+      - "4430:443"
+      - "8091:80"
+    volumes:
+      - ~/jenkins-ansible-nginx-gitlab/log/:/var/log/gitlab
+      - ~/jenkins-ansible-nginx-gitlab/etc:/etc/gitlab
+    restart: always
+volumes:
+    db_data: {}

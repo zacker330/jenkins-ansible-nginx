@@ -1,0 +1,2 @@
+[nginx]
+192.168.52.10 ansible_ssh_user=vagrant ansible_ssh_pass=vagrant

@@ -1,0 +1,1 @@
+docker build -f JenkinsSlaveAnsibleDockerfile -t jenkins-swarm-ansible .
