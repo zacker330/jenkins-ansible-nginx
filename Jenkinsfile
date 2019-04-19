@@ -1,9 +1,9 @@
 pipeline{
   agent any
   stages{
-    stage("build"){
+    stage("deploy nginx"){
       steps{
-        echo "xxx"
+        sh "ansible-playbook -i env-conf/test  playbook/playbook.yaml"
       }
     }
   }
