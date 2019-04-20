@@ -6,7 +6,7 @@ pipeline{
   stages{
     stage("deploy nginx"){
       steps{
-        sh "ansible-playbook -i env-conf/test  playbook/playbook.yaml"
+        sh "ansible-playbook -i env-conf/dev  playbook/playbook.yaml"
       }
     }
   }
