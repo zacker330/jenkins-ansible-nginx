@@ -3,12 +3,13 @@ pipeline{
   environment{
     ANSIBLE_HOST_KEY_CHECKING = false
   }
+  triggers {
+    	// 每分钟判断一次代码是否有变化
+   		pollSCM('H/1 * * * *')
+  }
   stages{
     stage("deploy nginx"){
       steps{
-        sh "ansible-playbook -i env-conf/dev  playbook/playbook.yaml"
-        // 如果 host 没有匹配，Jenkins 任务不会报错
+        sh "ansible-playbook -i env-conf/dev  deploy/playbook.yaml"
       }
-    }
-  }
-}
+}}}
